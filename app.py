@@ -29,6 +29,9 @@ from core.report import build_report
 APP_TITLE = "光电实验数据处理助手"
 APP_SUBTITLE = "面向光电专业本科实验：公式计算 · 数据拟合 · 不确定度评定 · 实验报告生成"
 
+# 拟合类型的中文显示名
+FIT_KIND_CN = {"linear": "线性拟合", "poly": "多项式拟合", "custom": "自定义函数拟合"}
+
 # 每个公式给出一组示例输入，便于快速体验
 FORMULA_EXAMPLES = {
     "薄透镜成像公式": "示例：物距 u = 20，像距 v = 30 → 焦距 f = 12 cm",
@@ -308,7 +311,7 @@ def gen_report(name, student, sid, cls, date_str, teacher,
 
     if not conclusion or not conclusion.strip():
         conclusion = (
-            f"本实验采用{res['kind']}方式处理数据，拟合结果如下：\n{res['text']}\n"
+            f"本实验采用{FIT_KIND_CN.get(res['kind'], res['kind'])}方式处理数据，拟合结果如下：\n{res['text']}\n"
             "（请补充：与理论值/标准值的比较及误差来源分析。）"
         )
 
@@ -324,7 +327,7 @@ def gen_report(name, student, sid, cls, date_str, teacher,
     preview = [
         f"### 报告预览：{name}",
         f"- 姓名：{student or '（未填）'}　学号：{sid or '（未填）'}　班级：{cls or '（未填）'}",
-        f"- 拟合方式：{res['kind']}，R² = {res['r2']:.4f}",
+        f"- 拟合方式：{FIT_KIND_CN.get(res['kind'], res['kind'])}，R² = {res['r2']:.4f}",
         f"- 数据点数：{len(x)}",
         f"- 报告文件：{os.path.basename(out_path)}",
     ]

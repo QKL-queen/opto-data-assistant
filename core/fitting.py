@@ -78,6 +78,10 @@ def parse_xy(text):
             raise ValueError(f"第 {lineno} 行数据列数不合法（应 2 或 3 列）：{line}")
     if len(xs) < 3:
         raise ValueError(f"有效数据点不足（仅 {len(xs)} 个），至少需要 3 个数据点。")
+    if dys and len(dys) != len(xs):
+        raise ValueError(
+            f"y 误差列（dy）不完整：共 {len(xs)} 行数据，但只有 {len(dys)} 行带第 3 列 dy。"
+            "请统一每行格式（x, y 或 x, y, dy）。")
     return xs, ys, (dys if dys else None)
 
 
@@ -319,6 +323,7 @@ def fit_data(x, y, kind="linear", degree=2, expr="", p0_text=""):
                 "y_fit": y_fit, "text": text}
     if kind == "custom":
         res = custom_fit(x, y, expr, p0_text)
+        res["kind"] = "custom"  # 统一入口保证所有类型都带 kind 字段（gen_report 依赖）
         names = res["param_names"]
         stds = res["param_std"]
         param_lines = "，".join(

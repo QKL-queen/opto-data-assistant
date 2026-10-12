@@ -115,7 +115,7 @@ def solve_grating(d=None, theta=None, m=None, lam=None):
     elif m is None:
         m_val = d * 1000 * math.sin(math.radians(theta)) / lam
         m = int(round(m_val))
-        if abs(m_val - m) > 1e-6:
+        if abs(m_val - m) > 1e-3:
             raise ValueError(f"计算得到 m = {m_val:.4f}，不是整数，说明给定数据不自洽，请检查。")
     return {"d": d, "theta": theta, "m": m, "lam": lam}, []
 
@@ -161,7 +161,7 @@ def solve_single_slit(a=None, theta=None, m=None, lam=None):
     elif m is None:
         m_val = a * 1e6 * math.sin(math.radians(theta)) / lam
         m = int(round(m_val))
-        if abs(m_val - m) > 1e-6:
+        if abs(m_val - m) > 1e-3:
             raise ValueError(f"计算得到 m = {m_val:.4f}，不是整数，说明给定数据不自洽，请检查。")
     return {"a": a, "theta": theta, "m": m, "lam": lam}, []
 
