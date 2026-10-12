@@ -245,6 +245,6 @@ python self_test.py
 
 ## 🙋 作者
 
-物光创新实验室 2026 招新作品・作者：〔你的姓名〕
+物光创新实验室 2026 招新作品・作者：王子骞
 
-GitHub：〔你的仓库链接〕
+GitHub：https://github.com/QKL-queen/opto-data-assistant
