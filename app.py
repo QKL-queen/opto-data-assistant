@@ -182,7 +182,7 @@ def build_fit_tab():
                 load_btn = gr.Button("读取文件内容到上方输入框")
             with gr.Column(scale=1):
                 kind_rd = gr.Radio(
-                    choices=[("linear", "线性拟合 y = kx + b"), ("poly", "多项式拟合"), ("custom", "自定义函数拟合")],
+                    choices=[("线性拟合 y = kx + b", "linear"), ("多项式拟合", "poly"), ("自定义函数拟合", "custom")],
                     value="linear", label="拟合方式")
                 degree_sl = gr.Slider(1, 6, value=2, step=1, label="多项式阶数", visible=False)
                 expr_tb = gr.Textbox(label="自定义函数表达式（参数自动识别）", value="a*exp(-b*x)+c",
@@ -353,7 +353,7 @@ def build_report_tab():
             rep_data_tb = gr.Textbox(label="实验数据（每行 x, y 或 x, y, dy）", lines=6,
                                      placeholder="示例：\n1, 2.1\n2, 4.0\n3, 5.9")
             with gr.Row():
-                rep_kind = gr.Radio(choices=[("linear", "线性"), ("poly", "多项式"), ("custom", "自定义")],
+                rep_kind = gr.Radio(choices=[("线性", "linear"), ("多项式", "poly"), ("自定义", "custom")],
                                     value="linear", label="拟合方式")
                 rep_degree = gr.Slider(1, 6, value=2, step=1, label="多项式阶数", visible=False)
                 rep_expr = gr.Textbox(label="自定义表达式", value="a*exp(-b*x)+c", visible=False)
