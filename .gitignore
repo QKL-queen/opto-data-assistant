@@ -11,3 +11,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# 个人材料（仅打包提交，不入公开仓库）
+docs/个人简介.docx
