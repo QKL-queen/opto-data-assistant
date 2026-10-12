@@ -14,3 +14,7 @@ Thumbs.db
 
 # 个人材料（仅打包提交，不入公开仓库）
 docs/个人简介.docx
+
+# GitHub 操作说明（仅本地留档，不入仓库/压缩包）
+docs/GitHub上传操作手册.md
+docs/GitHub Desktop推送指南.md
